@@ -25,7 +25,7 @@ const showPosts = async (req, res) => {
 // Function to get a post by ID
 const getPostById = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params; // Correctly extract the post ID from the request parameters
     const post = await Post.findById(id).populate('comment'); // Assuming comments are populated
     if (!post) {
       return res.status(404).json({ message: "Post not found" });
@@ -35,6 +35,7 @@ const getPostById = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
 
 // Function to like a post
 const likePost = async (req, res) => {
