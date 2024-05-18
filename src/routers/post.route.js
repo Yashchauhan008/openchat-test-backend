@@ -1,13 +1,20 @@
-const express = require('express')
-const postRouter = express.Router()
-const { addPost, showPosts, getPostById, likePost, dislikePost} = require('../controllers/post.controllre')
+const express = require('express');
+const postRouter = express.Router();
+const { addPost, showPosts, getPostById, likePost, dislikePost } = require('../controllers/post.controllre');
 
-postRouter.get("/",showPosts)
-postRouter.post("/upload",addPost)
-postRouter.post('/like/:id', likePost)
-postRouter.post('/dislike/:id', dislikePost)
-postRouter.get("/:id",getPostById)
+// Route to show all posts
+postRouter.get("/", showPosts);
 
+// Route to add a new post
+postRouter.post("/upload", addPost);
 
+// Route to get a specific post by ID
+postRouter.get("/:id", getPostById);
 
-module.exports = postRouter
+// Route to like a post
+postRouter.post("/:id/like", likePost);
+
+// Route to dislike a post
+postRouter.post("/:id/dislike", dislikePost);
+
+module.exports = postRouter;
